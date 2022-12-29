@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS db-blog;
+CREATE DATABASE db-blog;
