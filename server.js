@@ -1,3 +1,7 @@
+
+/**REVIEW IF THIS CODE IS CORRECT */
+
+
 //Creates a super simple Express app which shows the basic way to register a Handlebars view engine using this package.
 //https://www.npmjs.com/package/express-handlebars
 const express = require('express');
