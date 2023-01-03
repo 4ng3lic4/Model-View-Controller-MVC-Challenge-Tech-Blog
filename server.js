@@ -1,4 +1,9 @@
  
+//ASK 
+const exphbs = require("express-handlebars");
+const PORT = process.env.PORT || 3001;
+//
+
 /**REVIEW IF THIS CODE IS CORRECT */
 
 
@@ -24,9 +29,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+///ASK BCS
+const hbs = exphbs.create();
 
-app.engine('handlebars', engine());
-app.set('view engine', 'handlebars');
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+//ASK
 // not needed app.set('views', './views');
 
 app.get('/', (req, res) => {
