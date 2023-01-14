@@ -14,7 +14,7 @@ const sequelize = require('../../config/connection');
 // GET all users for homepage
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: ['id', 'title'. 'created_at', 'post_content'],
+        attributes: ['id', 'title', 'created_at', 'post_content'],
         order: [['created_at', 'DESC']],
         include: [
             {
