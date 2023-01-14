@@ -110,4 +110,14 @@ req.session.save(() => {
         });
 });
 
-//After logging in router post with conditional to destryo session and show 204 status
+//After logging in router post with conditional to destroy session and show 204 status
+
+router.posr('/logout,(req,res' => {
+    if (req.session.loggedIn) {
+        res.status.destroy(( => {
+            res.status(204).end();
+        }))
+    } else {
+        res.status(404).end();
+    }
+});
