@@ -112,12 +112,34 @@ req.session.save(() => {
 
 //After logging in router post with conditional to destroy session and show 204 status
 
-router.posr('/logout,(req,res' => {
+router.post('/logout',(req,res) => {
     if (req.session.loggedIn) {
-        res.status.destroy(( => {
+        res.status.destroy(() => {
             res.status(204).end();
-        }))
+        });
     } else {
         res.status(404).end();
     }
 });
+
+router.put('/:id', withAuth, (req, res) => {
+    User.update(req.body, {
+        individualHooks: true,
+        where: {
+            id: req.params.id
+        }
+    })
+.then(dbUserData => {
+if(!dbUserData[0]) {
+    res.status(404).json({ message : 'No user found under that id!'});
+    return;
+}
+res.json(dbUserData);
+})
+.catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+});
+});
+
+module.exports = router;
