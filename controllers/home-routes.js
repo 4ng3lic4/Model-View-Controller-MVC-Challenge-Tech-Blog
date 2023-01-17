@@ -84,9 +84,48 @@ router.get('/signup',  (req, res) => {
             'created_at',
             'post_content'
         ],
-        
+include: [
+    {
+        model: Comment,
+        attributes: [
+            'id',
+            'comment_text',
+            'post_id',
+            'user_id',
+            'created_at'
+        ],
+        include: {
+            model: User,
+            attributes: ['username,']
+        }
+    },
+    {
+        model: User,
+        attributes: ['username,']
+    }
+]
        })
+       //then here
+       
         
+       .then(dbPostData => {
+        if (!dbPostData) {
+            res.status(404).json({ message: 'Sorry, no post was found with that id' });
+            return;
+        }
 
+        //Render data
+        const post = dbPostData.get({ plain: true });
+        res.render('sigle-post', {
+            post,
+            loggedIn: req.session.loggedIn
+        });
+    })
+    //Catch  error
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
         });
     
+        module.esports= router;
