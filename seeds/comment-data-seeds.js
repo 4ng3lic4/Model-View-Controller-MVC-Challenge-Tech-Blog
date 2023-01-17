@@ -4,9 +4,9 @@ const { Comment } = require('../models');
 
 const commentData = [
   {
-    user_id: 1,
-    post_id: 5,
-    comment_text: 'Awesome!',
+   // user_id: 
+   //post_id: 
+   // comment_text: 
   },
   
 ];
